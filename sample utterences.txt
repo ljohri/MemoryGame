@@ -1,0 +1,8 @@
+NoIntent No
+
+YesIntent yes
+YesIntent sure
+
+AnswerIntentE my five numbers are {first} {second} {third} {fourth} {fifth}
+AnswerIntentE {first} {second} {third} {fourth} {fifth}
+AnswerIntentE {first} {second} {third} {fourth} and {fifth}

@@ -1,0 +1,11 @@
+welcome: Welcome {{user}} to the memory game. Shall we start? 
+ 
+level_round: Can you repeat the numbers {{ numbers|join(", ") }} backwards?
+
+round: Can you repeat the numbers {{ numbers|join(", ") }} backwards?
+
+win: Good job! You won with {{delta}} points
+
+lose: Sorry, that's the wrong answer.
+
+bye: See you later, alligator.
