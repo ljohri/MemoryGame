@@ -104,6 +104,19 @@ table_name = 'game3'
 insert_test()
  
 
+
+@ask.launch
+def new_game():
+    print('Entering new game')
+    last_user = get_last_user();
+    print(last_user)
+
+    session.attributes['state'] = 'launch'
+    session.attributes['user'] = last_user
+    session.attributes['start_time'] = timer()
+    welcome_msg = render_template('welcome',user=last_user)
+    return  question(welcome_msg)
+
 @ask.intent("start")
 
 @ask.intent("UserIntent")
@@ -135,16 +148,7 @@ def next_round():
     session.attributes['start_time'] = timer()
     return question(round_msg)
 
-@ask.launch
-def new_game():
-    print('Entering new game')
-    last_user = get_last_user();
-    print(last_user)
 
-    session.attributes['state'] = 'launch'
-    session.attributes['user'] = last_user
-    welcome_msg = render_template('welcome',user=last_user)
-    return  question(welcome_msg)
 
 @ask.intent("LevelIntent", convert={'level':int})
 def level_fix(level):
@@ -159,37 +163,6 @@ def level_fix(level):
     session.attributes['start_time'] = timer()
     return question(level_msg) 
 
-@ask.intent("AnswerIntentC", convert={'first': int, 'second': int, 'third': int})
-def answer(first, second, third):
-
-    delta = round(timer() - session.attributes['start_time'],3)
-
-    print('Entering AnswerIntentC')
-    winning_numbers = session.attributes['numbers']
-
-    if [first, second, third] == winning_numbers:
-        msg = render_template('win',delta=delta)
-    else:
-        msg = render_template('lose')
-
-    return question(msg+' Repeat?')
-
-
-@ask.intent("AnswerIntentD", convert={'first': int, 'second': int, 'third': int,'fourth':int})
-def answer(first, second, third,fourth):
-
-    print('Entering AnswerIntentD')
-    winning_numbers = session.attributes['numbers']
-    delta = int((timer() - session.attributes['start_time']-9)*1000)
-    nums= [first,second,third,fourth]
-    print(nums)
-    print(winning_numbers)
-
-    if [first, second, third,fourth] == winning_numbers:
-        msg = render_template('win',delta=delta)
-    else:
-        msg = render_template('lose')
-    return question(msg+',,Play again?')
 
 
 @ask.intent("AnswerIntentE", convert={'first': int, 'second': int, 'third': int,'fourth':int,'fifth':int})
