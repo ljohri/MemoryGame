@@ -1,8 +1,10 @@
-NoIntent No
-
 YesIntent yes
 YesIntent sure
-
+LevelIntent Level {level}
+NoIntent No
+UserIntent user {user}
+UserIntent name {user}
+UserIntent I am {user}
 AnswerIntentE my five numbers are {first} {second} {third} {fourth} {fifth}
 AnswerIntentE {first} {second} {third} {fourth} {fifth}
 AnswerIntentE {first} {second} {third} {fourth} and {fifth}
